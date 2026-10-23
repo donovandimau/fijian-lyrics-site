@@ -7,3 +7,7 @@ function card(s){return `<article id="${s.id}"><h2>${esc(s.title)}</h2><p><stron
 function render(){const t=q.value.trim().toLowerCase();const r=SONGS.filter(s=>[s.title,s.artist,s.lyricsFijian,s.translationEnglish].join(" ").toLowerCase().includes(t));
 count.textContent=`${r.length} song${r.length==1?"":"s"}`;list.innerHTML=r.map(s=>`<li><a href="#${s.id}">${esc(s.title)}</a></li>`).join("");box.innerHTML=r.map(card).join("")}
 q.addEventListener("input",render);render();
+const cbox=document.getElementById("catalogue");
+function ccard(c){return `<article class="link-card"><h3>${esc(c.title)}</h3><p>${esc(c.artist)}${c.year?" ("+esc(c.year)+")":""} · ${esc(c.genre)}</p><p><small>${esc(c.rightsNote)}</small></p><p><a href="${esc(c.sourceUrl)}" rel="noopener" target="_blank">Lyrics on source site</a> (${esc(c.sourceName)})</p></article>`}
+function renderCat(){const t=q.value.trim().toLowerCase();const r=(window.CATALOGUE||[]).filter(c=>[c.title,c.artist,c.genre].join(" ").toLowerCase().includes(t));cbox.innerHTML=r.map(ccard).join("");count.textContent+=` · ${r.length} catalogue entries`}
+q.addEventListener("input",renderCat);renderCat();

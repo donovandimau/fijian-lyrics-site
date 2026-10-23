@@ -5,3 +5,7 @@
 - Bula Maleya: only a blog source was found.
 - Loma ni Buca: no reputable source has been found.
 - Next step: confirm rights, then fill in the lyrics fields.
+
+## Catalogue draft (branch catalogue-draft)
+- `catalogue.js` holds 107 link-only entries with metadata only and no lyric text. Sources are LyricsTranslate's Fijian language index (52 entries) and SingPraises.net's Fijian texts index (55 hymns that SingPraises marks public domain).
+- The public-domain flag for the hymns refers to the original English text. The Fijian translations may have their own rights, so verify before adding any text.
