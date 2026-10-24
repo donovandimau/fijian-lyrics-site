@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Make a lyric video from your music with Sere. Add lyrics, sync the lines, and download your video."><title>Lyric Video Studio · Sere</title><link rel="stylesheet" href="studio.css"></head>
+<body>
+<a class="skip" href="#main">Skip to studio</a>
+<header class="topbar"><a class="brand" href="index.html">Sere<span>Music, in your words.</span></a><nav aria-label="Main"><a href="index.html">Song library</a><a href="studio.html" aria-current="page">Video studio</a></nav></header>
+<main id="main">
+<div class="intro"><div><p class="eyebrow">SERE VIDEO STUDIO</p><h1>Give your song<br>a screen.</h1><p>Drop in your music. Add the words. Make a lyric video.</p></div><p class="local-note">Your music stays on this device.<br>Preview and export in your browser.</p></div>
+<div class="workspace">
+<section class="editor" aria-label="Music and lyrics">
+<div class="panel"><div class="step-title"><span>01</span><h2>Your music</h2></div>
+<div id="drop-zone" class="drop-zone"><label for="music-file"><strong>Drop your music here</strong><span>or choose audio from your device</span></label><input id="music-file" type="file" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.opus" multiple><p>MP3, WAV, M4A, OGG, FLAC and other formats your browser can play.</p></div>
+<label for="queue">Track</label><select id="queue"><option value="">No music loaded</option></select>
+<div class="fields"><div><label for="title">Song title</label><input id="title" maxlength="160" placeholder="Name your song"></div><div><label for="artist">Artist</label><input id="artist" maxlength="160" placeholder="Artist or performer"></div></div>
+<audio id="track" controls preload="metadata" aria-label="Your music"></audio>
+<p id="music-status" role="status">Choose a track to start.</p></div>
+<div class="panel"><div class="step-title"><span>02</span><h2>The words</h2></div>
+<label for="library-song">Start with a Sere song</label><select id="library-song"><option value="">Choose from the song library</option></select>
+<div class="toolbar"><label class="file-button" for="lyrics-file">Import lyrics<input id="lyrics-file" type="file" accept=".txt,.lrc,.srt,.vtt,.json"></label><button id="transcribe" type="button" disabled>Draft lyrics from audio</button><button id="cancel-transcribe" type="button" hidden>Cancel transcription</button></div>
+<p class="hint">Import TXT, LRC, SRT or VTT. Automatic drafts run on this device and need checking, especially for Fijian songs. First use downloads a speech model.</p>
+<p id="transcribe-status" role="status"></p>
+<label for="lyrics">Lyrics — one line at a time</label><textarea id="lyrics" rows="10" placeholder="Paste the words here, one sung line per row…" spellcheck="false"></textarea>
+<p id="library-source" class="hint"></p>
+<div class="toolbar"><button id="apply-lyrics" type="button">Build timeline</button><button id="spread" type="button">Spread lines across track</button></div>
+<p class="hint" id="timing-note">Plain lyrics start with estimated timings. Play the track and tap each line when it begins.</p></div>
+<div class="panel"><div class="step-title"><span>03</span><h2>Make it yours</h2></div>
+<div class="fields"><div><label for="theme">Colour</label><select id="theme"><option value="lagoon">Lagoon</option><option value="sunset">Sunset</option><option value="midnight">Midnight</option></select></div><div><label for="aspect">Frame</label><select id="aspect"><option value="landscape">Landscape · 16:9</option><option value="portrait">Portrait · 9:16</option><option value="square">Square · 1:1</option></select></div></div>
+<div class="toolbar"><button id="save-project" type="button">Save project</button><label class="file-button" for="project-file">Open project<input id="project-file" type="file" accept=".json"></label></div>
+<p class="hint">Project files save words, timing and style. Reattach your audio when you open one.</p></div>
+</section>
+<section class="preview-column" aria-label="Video preview and export">
+<div class="preview-card"><div class="preview-heading"><h2>Your video</h2><span>LIVE PREVIEW</span></div><div class="canvas-wrap"><canvas id="video-preview" width="1280" height="720" aria-label="Lyric video preview">Your browser needs canvas support to preview a lyric video.</canvas></div>
+<div class="export-actions"><button id="export-video" class="primary" type="button" disabled>Create lyric video</button><button id="cancel-export" type="button" hidden>Cancel export</button><a id="download-video" class="primary" download hidden>Download video</a></div>
+<progress id="export-progress" value="0" max="1" hidden aria-label="Video export progress"></progress><p id="export-status" role="status">Add music and lyrics to create your video.</p><p class="hint">Export includes your audio and takes the length of the track. Keep this tab in front while it renders.</p></div>
+<div class="panel timeline-panel"><div class="timeline-heading"><h2>Line timing</h2><button id="tap" type="button" disabled>Tap next line</button></div><p id="tap-status" role="status">Play the music, then tap when each line starts.</p>
+<div class="toolbar"><button id="reset-taps" type="button">Restart tapping</button><button id="download-lrc" type="button">Download LRC</button><button id="download-vtt" type="button">Download VTT</button></div>
+<div class="table-scroll"><table><caption class="sr-only">Editable lyric line start and end times in minutes and seconds</caption><thead><tr><th scope="col">Line</th><th scope="col">Start</th><th scope="col">End</th><th scope="col">Words</th></tr></thead><tbody id="timeline"></tbody></table></div>
+<p id="validation" role="status"></p></div>
+</section></div>
+</main><footer>Sere · Made for the music we carry.</footer>
+<script src="songs.js"></script><script src="catalogue.js"></script><script type="module" src="studio.js"></script>
+</body></html>
