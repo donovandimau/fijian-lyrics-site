@@ -1,6 +1,6 @@
 # Sere project state — 24 October 2026
 
-Current revision: music-upload-to-lyric-video studio, task726 lease1, claimed branch `agent/codex/build-sere-music-upload-and-lyric-video-studio/1`, based on existing production `68099fac871582b85877143b2c8e539cde8fcb72`.
+Current amendment: explicit Lyric video / Just the lyrics modes, editable automatic transcription and plain-text copy/TXT download. Text exports do not require video timing; both modes retain the same audio, words and timing. Resumed saved PR2 candidate `e708c6de950091598059d88a7d23e02f49a41265` on task726 lease2. Production publication remains held pending exact owner approval; production is `68099fac871582b85877143b2c8e539cde8fcb72`.
 
 - Studio: local audio drop/upload/folder and independent track projects, supplied/imported lyrics, optional local ASR, editable/tap timing, three themes and three aspect ratios, actual audio-backed video export with cancellation, project save/open and LRC/VTT export. Curated direct source recordings can be loaded through browser CORS with cancellation and errors that preserve the project.
 - Local first-load transcription succeeded on the official11-second speech fixture. This verifies the browser/model pipeline, not Fijian singing accuracy. Whisper has no Fijian language token.

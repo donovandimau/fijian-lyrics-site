@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {parseLyrics,validateCues,secondsLabel,toLrc,toVtt,parseTime} from '../lyrics-core.js';
+import {parseLyrics,validateCues,secondsLabel,toLrc,toVtt,parseTime,toPlainLyrics} from '../lyrics-core.js';
 const lrc=parseLyrics('[offset:500]\n[00:01.00][00:05.00]Bula vinaka\n[00:09.25]Ni sa moce',NaN);
 assert.equal(lrc.openEnded,true);
 assert.deepEqual(lrc.cues.map(c=>c.start),[1.5,5.5,9.75]);
@@ -19,4 +19,10 @@ assert.match(validateCues([{start:0,end:3,text:'A'},{start:2,end:4,text:'B'}],6)
 assert.match(validateCues([{start:0,end:7,text:'A'}],6),/after/);
 assert.ok(Number.isNaN(parseTime('bad')));
 assert.match(validateCues([{start:0,end:1,text:'a'.repeat(1001)}]),/Split/);
+assert.equal(toPlainLyrics('\uFEFFBula, Viti!\r\n\r\nNi sa moce — é\r\n'), 'Bula, Viti!\n\nNi sa moce — é');
+assert.equal(toPlainLyrics('[ar:Performer]\n[00:01.00]Bula\n[00:03.00]Moce'), 'Bula\nMoce');
+assert.equal(toPlainLyrics('WEBVTT\n\n1\n00:00:01.000 --> 00:00:03.000\nBula\nvinaka\n\n2\n00:00:04.000 --> 00:00:05.000\nMoce'), 'Bula\nvinaka\nMoce');
+assert.equal(toPlainLyrics('1\n00:00:01,000 --> 00:00:02,000\nBula'), 'Bula');
+assert.equal(toPlainLyrics('   \n'), '');
+console.log('PASS: TXT keeps Unicode/stanza breaks and strips LRC, SRT and VTT timing.');
 console.log('PASS: repeated LRC tags/offset, pre-audio import, SRT multiline/gaps, plain draft, timestamp carry/round-trip, VTT, overlap and duration validation.');

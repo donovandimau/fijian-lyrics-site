@@ -1,5 +1,7 @@
 # Sere
 
+The studio offers **Lyric video** and **Just the lyrics**. For text only, upload music, choose **Transcribe audio**, review the editable draft, then **Copy lyrics** or **Download TXT**. Text exports use current edits without requiring a timeline or video; timed imports export words without timestamps. Plain-text stanza breaks and Unicode are retained. Clipboard-denied browsers select the words for manual copying. Switch modes without losing music, words or timing. `studio.html?output=lyrics` opens the text-only view directly.
+
 Sere now includes a local lyric-video studio at `studio.html`: upload or drop audio (including a music folder), choose supplied library lyrics, import TXT/LRC/SRT/VTT, edit timing, preview three themes and three frame shapes, then create a downloadable video with the uploaded audio. Project JSON and LRC/VTT exports preserve edits. Each uploaded track keeps its own lyrics, timing and style in the session queue. Matching a supplied song's title can prefill its existing words; source-only entries still need lyrics.
 
 Optional automatic lyrics run locally using a version-pinned Transformers.js worker and Whisper tiny. First use downloads roughly 41 MB of model files plus the runtime. Audio is not uploaded. Drafts require review, especially Fijian singing (Whisper has no Fijian language token). Local transcription is limited to 15 minutes and 150 MB to protect browser memory; manual/library lyrics and video export do not depend on it.

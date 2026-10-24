@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Make a lyric video from your music with Sere. Add lyrics, sync the lines, and download your video."><title>Lyric Video Studio · Sere</title><link rel="stylesheet" href="studio.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Turn your music into a lyric video, or transcribe, edit and download just the lyrics with Sere."><title>Lyrics & Video Studio · Sere</title><link rel="stylesheet" href="studio.css"></head>
 <body>
 <a class="skip" href="#main">Skip to studio</a>
-<header class="topbar"><a class="brand" href="index.html">Sere<span>Music, in your words.</span></a><nav aria-label="Main"><a href="index.html">Song library</a><a href="studio.html" aria-current="page">Video studio</a></nav></header>
+<header class="topbar"><a class="brand" href="index.html">Sere<span>Music, in your words.</span></a><nav aria-label="Main"><a href="index.html">Song library</a><a href="studio.html" aria-current="page">Lyrics & video</a></nav></header>
 <main id="main">
-<div class="intro"><div><p class="eyebrow">SERE VIDEO STUDIO</p><h1>Give your song<br>a screen.</h1><p>Drop in your music. Add the words. Make a lyric video.</p></div><p class="local-note">Your music stays on this device.<br>Preview and export in your browser.</p></div>
+<div class="intro"><div><p class="eyebrow">SERE STUDIO</p><h1>Your music.<br>Your words.</h1><p>Make a lyric video, or get the lyrics to read and keep.</p></div><p class="local-note">Your music stays on this device.<br>Transcribe and create in your browser.</p></div>
+<fieldset class="output-choice"><legend>What would you like to make?</legend><label><input type="radio" name="output" value="video" checked><span><strong>Lyric video</strong><small>Words on screen, with your music</small></span></label><label><input type="radio" name="output" value="lyrics"><span><strong>Just the lyrics</strong><small>Transcribe, edit, copy or download text</small></span></label></fieldset>
+<p id="mode-status" class="hint" role="status">Add music and words, then sync and create your video. You can keep the lyrics too.</p>
 <div class="workspace">
 <section class="editor" aria-label="Music and lyrics">
 <div class="panel"><div class="step-title"><span>01</span><h2>Your music</h2></div>
@@ -18,19 +20,22 @@
 <div class="panel"><div class="step-title"><span>02</span><h2>The words</h2></div>
 <label for="library-song">Start with a Sere song</label><select id="library-song"><option value="">Choose from the song library</option></select>
 <div id="source-audio-panel" hidden><label for="source-audio">Available source recordings</label><select id="source-audio"></select><div class="toolbar"><button id="use-source-audio" type="button">Load source recording</button><button id="cancel-source-audio" type="button" hidden>Cancel loading</button></div><p class="hint">Vocal and accompaniment versions are labelled separately. A source must allow browser access to load here; its original link stays available below.</p></div>
-<div class="toolbar"><label class="file-button" for="lyrics-file">Import lyrics<input id="lyrics-file" type="file" accept=".txt,.lrc,.srt,.vtt,.json"></label><button id="transcribe" type="button" disabled>Draft lyrics from audio</button><button id="cancel-transcribe" type="button" hidden>Cancel transcription</button></div>
+<div class="toolbar"><button id="transcribe" class="primary" type="button" disabled>Transcribe audio</button><button id="cancel-transcribe" type="button" hidden>Cancel transcription</button><label class="file-button" for="lyrics-file">Import lyrics<input id="lyrics-file" type="file" accept=".txt,.lrc,.srt,.vtt,.json"></label></div>
 <p class="hint">Import TXT, LRC, SRT or VTT. Automatic drafts run on this device and need checking, especially for Fijian songs. First use downloads a speech model.</p>
 <p id="transcribe-status" role="status"></p>
 <label for="lyrics">Lyrics — one line at a time</label><textarea id="lyrics" rows="10" maxlength="200000" placeholder="Paste the words here, one sung line per row…" spellcheck="false"></textarea>
+<div class="toolbar"><button id="copy-lyrics" type="button" disabled>Copy lyrics</button><button id="download-lyrics" type="button" disabled>Download TXT</button></div>
+<p id="lyrics-status" class="hint" role="status">Review and edit the words here. Text downloads contain lyrics without timestamps.</p>
+<textarea id="copy-fallback" rows="4" readonly hidden aria-label="Lyrics ready to copy" spellcheck="false"></textarea>
 <p id="library-source" class="hint"></p>
-<div class="toolbar"><button id="apply-lyrics" type="button">Build timeline</button><button id="spread" type="button">Spread lines across track</button></div>
-<p class="hint" id="timing-note">Plain lyrics start with estimated timings. Play the track and tap each line when it begins.</p></div>
-<div class="panel"><div class="step-title"><span>03</span><h2>Make it yours</h2></div>
-<div class="fields"><div><label for="theme">Colour</label><select id="theme"><option value="lagoon">Lagoon</option><option value="sunset">Sunset</option><option value="midnight">Midnight</option></select></div><div><label for="aspect">Frame</label><select id="aspect"><option value="landscape">Landscape · 16:9</option><option value="portrait">Portrait · 9:16</option><option value="square">Square · 1:1</option></select></div></div>
 <div class="toolbar"><button id="save-project" type="button">Save project</button><label class="file-button" for="project-file">Open project<input id="project-file" type="file" accept=".json"></label></div>
+<div class="toolbar" data-video-only><button id="apply-lyrics" type="button">Build timeline</button><button id="spread" type="button">Spread lines across track</button></div>
+<p class="hint" id="timing-note" data-video-only>Plain lyrics start with estimated timings. Play the track and tap each line when it begins.</p></div>
+<div class="panel" data-video-only><div class="step-title"><span>03</span><h2>Make it yours</h2></div>
+<div class="fields"><div><label for="theme">Colour</label><select id="theme"><option value="lagoon">Lagoon</option><option value="sunset">Sunset</option><option value="midnight">Midnight</option></select></div><div><label for="aspect">Frame</label><select id="aspect"><option value="landscape">Landscape · 16:9</option><option value="portrait">Portrait · 9:16</option><option value="square">Square · 1:1</option></select></div></div>
 <p class="hint">Project files save words, timing and style. Reattach your audio when you open one.</p></div>
 </section>
-<section class="preview-column" aria-label="Video preview and export">
+<section class="preview-column" aria-label="Video preview and export" data-video-only>
 <div class="preview-card"><div class="preview-heading"><h2>Your video</h2><span>LIVE PREVIEW</span></div><div class="canvas-wrap"><canvas id="video-preview" width="1280" height="720" aria-label="Lyric video preview">Your browser needs canvas support to preview a lyric video.</canvas></div>
 <div class="export-actions"><button id="export-video" class="primary" type="button" disabled>Create lyric video</button><button id="cancel-export" type="button" hidden>Cancel export</button><a id="download-video" class="primary" download hidden>Download video</a></div>
 <progress id="export-progress" value="0" max="1" hidden aria-label="Video export progress"></progress><p id="export-status" role="status">Add music and lyrics to create your video.</p><p class="hint">Export includes your audio and takes the length of the track. Keep this tab in front while it renders.</p></div>

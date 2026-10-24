@@ -1,4 +1,4 @@
-import {parseLyrics, distribute, validateCues, secondsLabel, parseTime, toLrc, toVtt} from './lyrics-core.js';
+import {parseLyrics, distribute, validateCues, secondsLabel, parseTime, toLrc, toVtt, toPlainLyrics} from './lyrics-core.js';
 import {LyricRenderer} from './video-renderer.js';
 import {createTranscriber} from './transcriber.js';
 
@@ -33,6 +33,8 @@ function configure() {
 }
 function update() {
   for (const el of document.querySelectorAll('.editor input,.editor select,.editor textarea,.editor button,.timeline-panel button,.timeline-panel input')) el.disabled = working || transcribing || loadingRecording;
+  for (const el of document.querySelectorAll('input[name="output"]')) el.disabled = working || transcribing || loadingRecording;
+  for (const id of ['copy-lyrics','download-lyrics']) $(id).disabled = working || transcribing || loadingRecording || !toPlainLyrics($('lyrics').value);
   $('cancel-transcribe').disabled = false;
   $('cancel-source-audio').disabled = false;
   $('use-source-audio').disabled = working || transcribing || loadingRecording || !$('source-audio').options.length;
@@ -43,6 +45,17 @@ function update() {
   $('transcribe').disabled = !tracks[trackIndex] || !Number.isFinite(audio.duration) || working || transcribing || loadingRecording;
   if (!working && !exportMessageFixed) $('export-status').textContent = !tracks[trackIndex] ? 'Choose music to create your video.' : !cues.length ? 'Add lyrics and build a timeline to continue.' : dirty ? 'Build the timeline to apply your edited lyrics.' : error ? 'Check the line timing before creating a video.' : 'Ready to create your lyric video with audio.';
   configure();
+}
+function setOutput(mode) {
+  const lyricsOnly = mode === 'lyrics';
+  document.querySelector('.workspace').classList.toggle('lyrics-only', lyricsOnly);
+  for (const el of document.querySelectorAll('[data-video-only]')) el.hidden = lyricsOnly;
+  $('mode-status').textContent = lyricsOnly ? 'Upload your music, choose Transcribe audio, then review and copy or download the words. No video timing is needed.' : 'Add music and words, then sync and create your video. You can keep the lyrics too.';
+}
+for (const el of document.querySelectorAll('input[name="output"]')) el.addEventListener('change', () => setOutput(el.value));
+function resetLyricsStatus() {
+  $('lyrics-status').textContent = 'Review and edit the words here. Text downloads contain lyrics without timestamps.';
+  $('copy-fallback').hidden = true; $('copy-fallback').value = '';
 }
 function table() {
   const fragment = document.createDocumentFragment();
@@ -62,6 +75,7 @@ function table() {
       input.addEventListener('change', () => {
         cue[key] = key === 'text' ? input.value : parseTime(input.value);
         draftTiming = false; openEnded = false; dirty = false; $('lyrics').value = cues.map(c => c.text).join('\n');
+        resetLyricsStatus();
         invalidateVideo(); update();
       });
       cell.append(input); row.append(cell);
@@ -112,6 +126,8 @@ function selectTrack(index) {
     $('timing-note').textContent='Add lyrics for this track. Each queued song keeps its own words and timing.';
   }
   sourceAudioOptions();
+  resetLyricsStatus();
+  $('transcribe-status').textContent = '';
   $('queue').value = String(index);
   audio.src = tracks[index].url; audio.load();
   if (automaticTitle) $('title').value = tracks[index].file.name.replace(/\.[^.]+$/, '');
@@ -156,7 +172,7 @@ audio.addEventListener('timeupdate', () => {
   const current = cues.findIndex(c => audio.currentTime >= c.start && audio.currentTime < c.end);
   $('timeline').querySelectorAll('tr').forEach((row, i) => row.classList.toggle('active', i === current));
 });
-$('lyrics').addEventListener('input', () => {dirty = true; invalidateVideo(); update();});
+$('lyrics').addEventListener('input', () => {dirty = true; resetLyricsStatus(); invalidateVideo(); update();});
 $('apply-lyrics').addEventListener('click', applyText);
 $('spread').addEventListener('click', () => {
   const lines = parseLyrics($('lyrics').value, audio.duration).cues.map(c => c.text);
@@ -166,11 +182,12 @@ $('spread').addEventListener('click', () => {
 });
 $('lyrics-file').addEventListener('change', async e => {
   const file = e.target.files[0]; if (!file) return;
-  if (file.size > 2*1024*1024) { $('validation').textContent = 'Choose a lyrics file smaller than 2 MB.'; return; }
+  if (file.size > 2*1024*1024) { $('lyrics-status').textContent = 'Choose a lyrics file smaller than 2 MB.'; e.target.value = ''; return; }
   try {
     if (/\.json$/i.test(file.name)) loadProject(JSON.parse(await file.text()));
     else { $('lyrics').value = await file.text(); applyText(); }
-  } catch { $('validation').textContent = 'That file could not be opened. Choose TXT, LRC, SRT, VTT or a Sere project.'; }
+    resetLyricsStatus();
+  } catch { $('lyrics-status').textContent = 'That file could not be opened. Choose TXT, LRC, SRT, VTT or a Sere project.'; }
   e.target.value = '';
 });
 function useSong(index) {
@@ -180,7 +197,7 @@ function useSong(index) {
   $('lyrics').value = song.lyricsFijian || '';
   const source = $('library-source'); source.replaceChildren();
   if (song.source && /^https:\/\//.test(song.source)) {
-    source.append(song.lyricsFijian ? 'Words from the Sere library. ' : 'This catalogue entry has a source link. Add its lyrics and your recording to make a video. ');
+    source.append(song.lyricsFijian ? 'Words from the Sere library. ' : 'This catalogue entry has a source link. Load or upload a recording to transcribe its words, or import lyrics. ');
     const link = document.createElement('a'); link.href = song.source; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'Open song source'; source.append(link);
     for(const [i,url] of (song.recordingUrls || []).slice(0,4).entries()) {
       if(!/^https:\/\//.test(url)) continue;
@@ -188,6 +205,8 @@ function useSong(index) {
     }
   }
   sourceAudioOptions();
+  resetLyricsStatus();
+  $('transcribe-status').textContent = '';
   applyText();
 }
 function sourceAudioOptions() {
@@ -237,7 +256,27 @@ for (const id of ['title','artist','theme','aspect']) $(id).addEventListener('in
 function download(blob, name) {
   const url = URL.createObjectURL(blob), link = document.createElement('a'); link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
-function fileName() { return ($('title').value || 'sere-video').replace(/[^\p{L}\p{N}._-]+/gu,'-').slice(0,100); }
+function fileName(fallback = 'sere-video') { return ($('title').value || fallback).replace(/[^\p{L}\p{N}._-]+/gu,'-').slice(0,100); }
+$('copy-lyrics').addEventListener('click', async () => {
+  const text = toPlainLyrics($('lyrics').value); if (!text) return;
+  resetLyricsStatus();
+  try {
+    if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+    await navigator.clipboard.writeText(text);
+    $('lyrics-status').textContent = 'Lyrics copied.';
+  } catch {
+    // Offer a selectable plain transcript when browser clipboard permission is denied.
+    const fallback = $('copy-fallback'); fallback.value = text; fallback.hidden = false;
+    fallback.focus(); fallback.select();
+    $('lyrics-status').textContent = 'Automatic copy is unavailable. The lyrics are selected; use your device’s Copy command, or Download TXT.';
+  }
+});
+$('download-lyrics').addEventListener('click', () => {
+  const text = toPlainLyrics($('lyrics').value); if (!text) return;
+  resetLyricsStatus();
+  download(new Blob([text + '\n'], {type:'text/plain;charset=utf-8'}), `${fileName('sere-lyrics')}.txt`);
+  $('lyrics-status').textContent = 'Lyrics text file prepared. Check your browser downloads.';
+});
 for (const [id,convert,ext] of [['download-lrc',toLrc,'lrc'],['download-vtt',toVtt,'vtt']]) $(id).addEventListener('click', () => {
   const error = validateCues(cues, audio.duration);
   if (error || dirty) { $('validation').textContent = dirty ? 'Build the timeline first.' : error; return; }
@@ -260,6 +299,7 @@ function loadProject(project) {
   if (['landscape','portrait','square'].includes(project.aspect)) $('aspect').value = project.aspect;
   $('lyrics').value = cues.map(c => c.text).join('\n'); dirty = false; draftTiming = false; openEnded = false; tapIndex = 0;
   $('library-song').value = ''; $('library-source').textContent = '';
+  resetLyricsStatus();
   sourceAudioOptions();
   $('timing-note').textContent = `Project loaded. Reattach ${String(project.audioName || 'your original audio')} to continue.`;
   invalidateVideo(); table();
@@ -267,7 +307,7 @@ function loadProject(project) {
 $('project-file').addEventListener('change', async e => {
   const file = e.target.files[0]; if (!file) return;
   try {if (file.size > 2*1024*1024) throw new Error('Too large'); loadProject(JSON.parse(await file.text()));}
-  catch { $('validation').textContent = 'Choose a valid Sere project file smaller than 2 MB.'; }
+  catch { $('lyrics-status').textContent = 'Choose a valid Sere project file smaller than 2 MB.'; }
   e.target.value = '';
 });
 function lock(locked) {
@@ -314,7 +354,8 @@ $('transcribe').addEventListener('click', async () => {
     if (!hasTimings && !result.text?.trim()) throw new Error('No words were detected. Add lyrics or try a clearer recording.');
     cues = hasTimings ? result.cues.map(c => ({start:c.start,end:Math.min(c.end,audio.duration),text:c.text.trim()})).filter(c => c.end > c.start && c.text) : parseLyrics(result.text,audio.duration).cues;
     $('lyrics').value = cues.map(c => c.text).join('\n'); draftTiming = !hasTimings; openEnded = false; dirty = false; tapIndex = 0;
-    $('transcribe-status').textContent = hasTimings ? 'Draft ready. Review the words and line timing before exporting.' : 'Words detected, but no timings returned. The words are saved below; edit and tap their timing.';
+    $('transcribe-status').textContent = 'Transcript ready. Review and edit the words below, then copy or download the lyrics. Switch to Lyric video to sync and create a video.';
+    resetLyricsStatus();
     $('timing-note').textContent = hasTimings ? 'Automatic draft. Check the words against the recording and adjust timing below.' : 'Estimated timing applied to the recognized words. Split them into sung lines and tap to sync.';
     invalidateVideo(); table();
   } catch (error) { $('transcribe-status').textContent = error.name === 'AbortError' ? 'Transcription cancelled.' : `Could not create a draft: ${error.message}`; }
@@ -326,4 +367,7 @@ window.addEventListener('pagehide', event => { exportController?.abort(); record
 document.addEventListener('visibilitychange', () => { if (document.hidden && working) {exportController?.abort(); $('export-status').textContent = 'Export cancelled because the tab was hidden. Keep it visible and try again.';} });
 const selected = new URLSearchParams(location.search).get('song');
 if (selected) {const i=allSongs.findIndex(s => s.id===selected || s.title===selected); if(i>=0){$('library-song').value=String(i);useSong(i);}}
+const requestedOutput = new URLSearchParams(location.search).get('output');
+if (requestedOutput === 'lyrics') document.querySelector('input[name="output"][value="lyrics"]').checked = true;
+setOutput(document.querySelector('input[name="output"]:checked').value);
 configure(); table();

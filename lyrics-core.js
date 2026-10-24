@@ -61,6 +61,12 @@ export function validateCues(cues, duration) {
   return '';
 }
 export function toLrc(cues) { return cues.map(c => `[${secondsLabel(c.start).padStart(8,'0')}]${c.text.replace(/\n/g,' / ')}`).join('\n'); }
+// Keep plain-text stanza breaks; strip timing syntax only for timed imports.
+export function toPlainLyrics(text) {
+  const normalized = String(text).replace(/^\uFEFF/, '').replace(/\r\n?/g, '\n').trim();
+  const parsed = parseLyrics(normalized);
+  return parsed.timed ? parsed.cues.map(c => c.text).join('\n') : normalized;
+}
 export function toVtt(cues) {
   const stamp = n => { const ms = Math.round(n*1000); return `${String(Math.floor(ms/3600000)).padStart(2,'0')}:${String(Math.floor(ms/60000)%60).padStart(2,'0')}:${String(Math.floor(ms/1000)%60).padStart(2,'0')}.${String(ms%1000).padStart(3,'0')}`; };
   return 'WEBVTT\n\n' + cues.map((c,i) => `${i+1}\n${stamp(c.start)} --> ${stamp(c.end)}\n${c.text}`).join('\n\n') + '\n';
