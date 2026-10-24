@@ -90,7 +90,7 @@
     }
     if (button.id === 'dialog-play') { closeSong(); toggleAudio(true); }
   });
-  $('saved-nav').addEventListener('click', () => { setFilter('saved'); $('discover').scrollIntoView({behavior:reduced.matches ? 'instant' : 'smooth'}); document.querySelector('[data-filter="saved"]').focus({preventScroll:true}); });
+  $('saved-nav').addEventListener('click', () => { $('q').value = ''; setFilter('saved'); $('discover').scrollIntoView({behavior:reduced.matches ? 'instant' : 'smooth'}); document.querySelector('[data-filter="saved"]').focus({preventScroll:true}); });
   $('q').addEventListener('input', render);
   $('clear-search').addEventListener('click', () => { $('q').value = ''; render(); $('q').focus(); });
   $('sort').addEventListener('change', render);
