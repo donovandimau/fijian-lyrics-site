@@ -8,22 +8,22 @@ let cues = [], tracks = [], trackIndex = -1, draftTiming = false, dirty = false,
 let openEnded = false;
 let exportController, downloadUrl, working = false, transcribing = false, sourceVersion = 0;
 let transcriptionRun;
+let exportMessageFixed = false;
+let automaticTitle = true;
 const renderer = new LyricRenderer($('video-preview'), audio);
 const transcriber = createTranscriber({onProgress: p => {
   $('transcribe-status').textContent = typeof p === 'string' ? p : (p?.message || 'Preparing speech model…');
 }});
 const allSongs = [...window.SONGS];
-const seen = new Set(allSongs.map(s => s.title.toLocaleLowerCase()));
 for (const song of window.CATALOGUE || []) {
-  if (!seen.has(song.title.toLocaleLowerCase())) {
-    allSongs.push({...song, source: song.sourceUrl}); seen.add(song.title.toLocaleLowerCase());
-  }
+  allSongs.push({...song, source: song.fijianUrl || song.sourceUrl});
 }
 allSongs.forEach((song, i) => {
-  const option = new Option(`${song.title}${song.lyricsFijian ? ' · lyrics ready' : ' · source link'}`, String(i));
+  const option = new Option(`${song.title}${song.lyricsFijian ? ' · lyrics ready' : ` · ${song.artist || 'source link'}`}`, String(i));
   $('library-song').add(option);
 });
 function invalidateVideo() {
+  exportMessageFixed = false;
   $('download-video').hidden = true;
   if (downloadUrl) { URL.revokeObjectURL(downloadUrl); downloadUrl = null; }
 }
@@ -35,9 +35,10 @@ function update() {
   $('cancel-transcribe').disabled = false;
   const error = validateCues(cues, audio.duration);
   $('validation').textContent = dirty ? 'Build the timeline to apply your edited lyrics.' : error;
-  $('export-video').disabled = !tracks[trackIndex] || !Number.isFinite(audio.duration) || !!error || dirty || working || transcribing;
+  $('export-video').disabled = !tracks[trackIndex] || !Number.isFinite(audio.duration) || !!audio.error || audio.readyState < 1 || !!error || dirty || working || transcribing;
   $('tap').disabled = !cues.length || !tracks[trackIndex] || working || dirty || transcribing;
   $('transcribe').disabled = !tracks[trackIndex] || !Number.isFinite(audio.duration) || working || transcribing;
+  if (!working && !exportMessageFixed) $('export-status').textContent = !tracks[trackIndex] ? 'Choose music to create your video.' : !cues.length ? 'Add lyrics and build a timeline to continue.' : dirty ? 'Build the timeline to apply your edited lyrics.' : error ? 'Check the line timing before creating a video.' : 'Ready to create your lyric video with audio.';
   configure();
 }
 function table() {
@@ -67,6 +68,7 @@ function table() {
   $('timeline').replaceChildren(fragment); update();
 }
 function applyText() {
+  if ($('lyrics').value.length > 200000) { $('validation').textContent = 'Use up to 200,000 characters in one lyrics project.'; return; }
   const result = parseLyrics($('lyrics').value, audio.duration);
   if (result.cues.length > 2000) { $('validation').textContent = 'Use up to 2,000 lyric lines in one project.'; return; }
   cues = result.cues; draftTiming = !result.timed; openEnded = !!result.openEnded; dirty = false; tapIndex = 0;
@@ -76,19 +78,50 @@ function applyText() {
 }
 function message(text) { $('music-status').textContent = text; }
 function cancelTranscription() { if (transcriptionRun) transcriptionRun.cancelled = true; transcriber.cancel(); }
+function saveTrack() {
+  if(!tracks[trackIndex]) return;
+  tracks[trackIndex].project = {
+    cues:cues.map(c=>({...c})),lyrics:$('lyrics').value,draftTiming,openEnded,dirty,tapIndex,automaticTitle,
+    values:Object.fromEntries(['title','artist','theme','aspect','library-song'].map(id=>[id,$(id).value])),
+    source:$('library-source').cloneNode(true),note:$('timing-note').textContent,
+  };
+}
 function selectTrack(index) {
-  if (working || index < 0 || !tracks[index]) return;
+  if (working || index < 0 || !tracks[index] || index === trackIndex) return;
+  const hadTrack = trackIndex >= 0;
+  saveTrack();
   cancelTranscription(); sourceVersion++; audio.pause(); trackIndex = index;
+  const project = tracks[index].project;
+  if(project) {
+    cues=project.cues.map(c=>({...c})); draftTiming=project.draftTiming; openEnded=project.openEnded;
+    dirty=project.dirty; tapIndex=project.tapIndex; automaticTitle=project.automaticTitle;
+    for(const [id,value] of Object.entries(project.values)) $(id).value=value;
+    $('lyrics').value=project.lyrics;
+    $('library-source').replaceChildren(...Array.from(project.source.childNodes,n=>n.cloneNode(true)));
+    $('timing-note').textContent=project.note;
+  } else if(hadTrack) {
+    cues=[]; draftTiming=false; openEnded=false; dirty=false; tapIndex=0; automaticTitle=true;
+    for(const id of ['title','artist','lyrics','library-song']) $(id).value='';
+    $('library-source').replaceChildren();
+    $('timing-note').textContent='Add lyrics for this track. Each queued song keeps its own words and timing.';
+  }
   $('queue').value = String(index);
   audio.src = tracks[index].url; audio.load();
-  if (!$('library-song').value) $('title').value = tracks[index].file.name.replace(/\.[^.]+$/, '');
-  message(`Loading ${tracks[index].file.name}…`); invalidateVideo(); update();
+  if (automaticTitle) $('title').value = tracks[index].file.name.replace(/\.[^.]+$/, '');
+  if(!project && !cues.length) {
+    const normalized=s=>s.normalize('NFKD').toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');
+    const stem=normalized(tracks[index].file.name.replace(/\.[^.]+$/,''));
+    const matches=allSongs.map((song,i)=>({song,i})).filter(({song})=>normalized(song.title)===stem);
+    const match=matches.find(({song})=>song.lyricsFijian) || (matches.length===1?matches[0]:null);
+    if(match){$('library-song').value=String(match.i);useSong(match.i);}
+  }
+  message(`Loading ${tracks[index].file.name}…`); invalidateVideo(); table();
 }
 function addTracks(files) {
   if (working) return;
   let first = tracks.length;
   for (const file of files) {
-    if (file.type && !file.type.startsWith('audio/') && !/\.(mp3|wav|m4a|aac|ogg|oga|flac|opus|aiff?|webm|mp4)$/i.test(file.name)) continue;
+    if (!file.type.startsWith('audio/') && !/\.(mp3|wav|m4a|aac|ogg|oga|flac|opus|aiff?|webm|mp4)$/i.test(file.name)) continue;
     if (!file.size) continue;
     tracks.push({file, url: URL.createObjectURL(file)});
     $('queue').add(new Option(file.name, String(tracks.length - 1)));
@@ -97,6 +130,7 @@ function addTracks(files) {
   $('music-file').value = '';
 }
 $('music-file').addEventListener('change', e => addTracks(e.target.files));
+$('music-folder').addEventListener('change', e => {addTracks(e.target.files); e.target.value='';});
 $('queue').addEventListener('change', e => selectTrack(+e.target.value));
 const drop = $('drop-zone');
 for (const event of ['dragenter','dragover']) drop.addEventListener(event, e => {e.preventDefault(); drop.classList.add('dragging');});
@@ -134,11 +168,16 @@ $('lyrics-file').addEventListener('change', async e => {
 function useSong(index) {
   const song = allSongs[index]; if (!song) return;
   $('title').value = song.title; $('artist').value = song.artist || '';
+  automaticTitle = false;
   $('lyrics').value = song.lyricsFijian || '';
   const source = $('library-source'); source.replaceChildren();
   if (song.source && /^https:\/\//.test(song.source)) {
     source.append(song.lyricsFijian ? 'Words from the Sere library. ' : 'This catalogue entry has a source link. Add its lyrics and your recording to make a video. ');
     const link = document.createElement('a'); link.href = song.source; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'Open song source'; source.append(link);
+    for(const [i,url] of (song.recordingUrls || []).slice(0,3).entries()) {
+      if(!/^https:\/\//.test(url)) continue;
+      const recording = document.createElement('a'); recording.href=url; recording.target='_blank'; recording.rel='noopener'; recording.textContent=`Recording source${i ? ` ${i+1}` : ''}`; source.append(' · ',recording);
+    }
   }
   applyText();
 }
@@ -157,7 +196,7 @@ function tapLine() {
 }
 $('tap').addEventListener('click', tapLine);
 $('reset-taps').addEventListener('click', () => {tapIndex = 0; audio.pause(); audio.currentTime = 0; $('tap-status').textContent = 'Play the music, then tap when each line starts.'; table();});
-for (const id of ['title','artist','theme','aspect']) $(id).addEventListener('input', () => {invalidateVideo(); configure();});
+for (const id of ['title','artist','theme','aspect']) $(id).addEventListener('input', () => {if(id==='title') automaticTitle=false; invalidateVideo(); update();});
 function download(blob, name) {
   const url = URL.createObjectURL(blob), link = document.createElement('a'); link.href = url; link.download = name; link.click(); setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
@@ -169,6 +208,8 @@ for (const [id,convert,ext] of [['download-lrc',toLrc,'lrc'],['download-vtt',toV
 });
 $('save-project').addEventListener('click', () => {
   if (dirty) applyText();
+  const error = validateCues(cues,audio.duration);
+  if(dirty || error) { $('validation').textContent = dirty ? 'Build a valid timeline before saving.' : error; return; }
   const project = {format:'sere-project',version:1,title:$('title').value,artist:$('artist').value,theme:$('theme').value,aspect:$('aspect').value,audioName:tracks[trackIndex]?.file.name || '',cues};
   download(new Blob([JSON.stringify(project,null,2)],{type:'application/json'}),`${fileName()}.sere.json`);
 });
@@ -177,6 +218,7 @@ function loadProject(project) {
   const imported = project.cues.map(c => ({start:Number(c.start),end:Number(c.end),text:String(c.text || '').slice(0,2000)}));
   const error = validateCues(imported); if (error && imported.length) throw new Error(error);
   cues = imported; $('title').value = String(project.title || '').slice(0,160); $('artist').value = String(project.artist || '').slice(0,160);
+  automaticTitle = false;
   if (['lagoon','sunset','midnight'].includes(project.theme)) $('theme').value = project.theme;
   if (['landscape','portrait','square'].includes(project.aspect)) $('aspect').value = project.aspect;
   $('lyrics').value = cues.map(c => c.text).join('\n'); dirty = false; draftTiming = false; openEnded = false; tapIndex = 0;
@@ -199,6 +241,7 @@ function lock(locked) {
 $('export-video').addEventListener('click', async () => {
   if ($('export-video').disabled) return;
   invalidateVideo(); exportController = new AbortController(); lock(true); $('export-progress').value = 0;
+  exportMessageFixed = true;
   $('export-status').textContent = 'Rendering your video with audio…';
   try {
     const result = await renderer.export({signal:exportController.signal,onProgress:p => {
@@ -214,6 +257,7 @@ $('cancel-export').addEventListener('click', () => exportController?.abort());
 $('transcribe').addEventListener('click', async () => {
   const track = tracks[trackIndex]; if (!track || transcribing) return;
   const version = sourceVersion;
+  if (audio.duration > 15*60) { $('transcribe-status').textContent = 'Local transcription supports tracks up to 15 minutes. You can add lyrics and export this full track, or choose a shorter recording for transcription.'; return; }
   if (track.file.size > 150*1024*1024) { $('transcribe-status').textContent = 'For a local transcript, choose an audio file smaller than 150 MB. You can still add lyrics and export this track.'; return; }
   transcribing = true; $('cancel-transcribe').hidden = false; update();
   const run = {cancelled:false}; transcriptionRun = run;
@@ -228,18 +272,19 @@ $('transcribe').addEventListener('click', async () => {
     if (run.cancelled || version !== sourceVersion) throw new DOMException('Cancelled','AbortError');
     const result = await transcriber.transcribe(resampled.getChannelData(0).slice(),{language:'auto'});
     if (run.cancelled || version !== sourceVersion) return;
-    if (!result.cues?.length) throw new Error('No words were detected. Add lyrics or try a clearer recording.');
-    cues = result.cues.map(c => ({start:c.start,end:Math.min(c.end,audio.duration),text:c.text.trim()})).filter(c => c.end > c.start && c.text);
-    $('lyrics').value = cues.map(c => c.text).join('\n'); draftTiming = false; openEnded = false; dirty = false; tapIndex = 0;
-    $('transcribe-status').textContent = 'Draft ready. Review the words and line timing before exporting.';
-    $('timing-note').textContent = 'Automatic draft. Check the words against the recording and adjust timing below.';
+    const hasTimings = !!result.cues?.length;
+    if (!hasTimings && !result.text?.trim()) throw new Error('No words were detected. Add lyrics or try a clearer recording.');
+    cues = hasTimings ? result.cues.map(c => ({start:c.start,end:Math.min(c.end,audio.duration),text:c.text.trim()})).filter(c => c.end > c.start && c.text) : parseLyrics(result.text,audio.duration).cues;
+    $('lyrics').value = cues.map(c => c.text).join('\n'); draftTiming = !hasTimings; openEnded = false; dirty = false; tapIndex = 0;
+    $('transcribe-status').textContent = hasTimings ? 'Draft ready. Review the words and line timing before exporting.' : 'Words detected, but no timings returned. The words are saved below; edit and tap their timing.';
+    $('timing-note').textContent = hasTimings ? 'Automatic draft. Check the words against the recording and adjust timing below.' : 'Estimated timing applied to the recognized words. Split them into sung lines and tap to sync.';
     invalidateVideo(); table();
   } catch (error) { $('transcribe-status').textContent = error.name === 'AbortError' ? 'Transcription cancelled.' : `Could not create a draft: ${error.message}`; }
   finally {await context?.close().catch(() => {}); transcriptionRun = null; transcribing = false; $('cancel-transcribe').hidden = true; update();}
 });
 $('cancel-transcribe').addEventListener('click', cancelTranscription);
 window.addEventListener('beforeunload', e => {if(working){e.preventDefault();e.returnValue='';}});
-window.addEventListener('pagehide', () => { exportController?.abort(); transcriber.dispose(); tracks.forEach(t => URL.revokeObjectURL(t.url)); });
+window.addEventListener('pagehide', event => { exportController?.abort(); if(!event.persisted){transcriber.dispose(); renderer.destroy(); tracks.forEach(t => URL.revokeObjectURL(t.url));} });
 document.addEventListener('visibilitychange', () => { if (document.hidden && working) {exportController?.abort(); $('export-status').textContent = 'Export cancelled because the tab was hidden. Keep it visible and try again.';} });
 const selected = new URLSearchParams(location.search).get('song');
 if (selected) {const i=allSongs.findIndex(s => s.id===selected || s.title===selected); if(i>=0){$('library-song').value=String(i);useSong(i);}}

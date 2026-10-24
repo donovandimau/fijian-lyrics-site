@@ -63,6 +63,128 @@ function waitForAudio(audio, eventName, ready, signal, timeout = 20000) {
   });
 }
 
+// MediaRecorder's streaming WebM commonly omits Info.Duration. Add the nominal
+// track duration using Matroska's Segment Ticks, leaving every encoded packet
+// unchanged. This deliberately accepts recorder output, not arbitrary indexed
+// WebM edits: offsets/checksums must never silently become stale.
+// Format references: matroska.org/technical/elements.html and RFC 8794.
+export async function finalizeWebmDuration(blob, durationSeconds, { signal } = {}) {
+  if (!/webm/i.test(blob.type)) return blob;
+  if (signal?.aborted) throw abortError(signal);
+  if (!Number.isFinite(durationSeconds) || durationSeconds <= 0) throw new Error('The video has no usable duration.');
+  const bytes = new Uint8Array(await blob.arrayBuffer());
+  if (signal?.aborted) throw abortError(signal);
+  const invalid = () => new Error('This browser produced WebM metadata that could not be finalized safely. Try current Chrome or Edge.');
+  const element = (offset, limit) => {
+    if (offset >= limit || !bytes[offset]) throw invalid();
+    let idLength = 1, marker = 0x80;
+    while (!(bytes[offset] & marker)) { marker >>= 1; idLength++; }
+    if (idLength > 4 || offset + idLength >= limit) throw invalid();
+    let id = 0;
+    for (let i = 0; i < idLength; i++) id = id * 256 + bytes[offset + i];
+    const sizeOffset = offset + idLength;
+    let sizeLength = 1;
+    marker = 0x80;
+    if (!bytes[sizeOffset]) throw invalid();
+    while (!(bytes[sizeOffset] & marker)) { marker >>= 1; sizeLength++; }
+    if (sizeLength > 8 || sizeOffset + sizeLength > limit) throw invalid();
+    let value = BigInt(bytes[sizeOffset] & (marker - 1));
+    for (let i = 1; i < sizeLength; i++) value = (value << 8n) | BigInt(bytes[sizeOffset + i]);
+    const unknown = value === (1n << BigInt(sizeLength * 7)) - 1n;
+    if (!unknown && value > BigInt(Number.MAX_SAFE_INTEGER)) throw invalid();
+    const dataStart = sizeOffset + sizeLength;
+    const size = unknown ? null : Number(value);
+    const end = unknown ? limit : dataStart + size;
+    if (end > limit || end < dataStart) throw invalid();
+    return { id, offset, sizeOffset, sizeLength, dataStart, size, end };
+  };
+  const integer = (part) => {
+    if (part.size === null || part.size > 8) throw invalid();
+    let value = 0;
+    for (let at = part.dataStart; at < part.end; at++) value = value * 256 + bytes[at];
+    return value;
+  };
+  const sizeBytes = (value, minimumLength) => {
+    let length = minimumLength;
+    while (BigInt(value) >= (1n << BigInt(length * 7)) - 1n) length++;
+    if (length > 8) throw invalid();
+    const encoded = new Uint8Array(length);
+    let remaining = BigInt(value);
+    for (let i = length - 1; i >= 0; i--) { encoded[i] = Number(remaining & 255n); remaining >>= 8n; }
+    encoded[0] |= 1 << (8 - length);
+    return encoded;
+  };
+  let segment;
+  for (let at = 0; at < bytes.length;) {
+    const part = element(at, bytes.length);
+    if (part.id === 0x18538067) { segment = part; break; }
+    if (part.size === null) throw invalid();
+    at = part.end;
+  }
+  if (!segment) throw invalid();
+  let info;
+  for (let at = segment.dataStart; at < segment.end;) {
+    const part = element(at, segment.end);
+    if (part.id === 0x1549A966) { info = part; break; }
+    if (part.size === null) throw invalid();
+    at = part.end;
+  }
+  if (!info || info.size === null) throw invalid();
+  let scale = 1000000, durationElement, checksum = false;
+  for (let at = info.dataStart; at < info.end;) {
+    const part = element(at, info.end);
+    if (part.size === null) throw invalid();
+    if (part.id === 0x2AD7B1) scale = integer(part);
+    if (part.id === 0x4489) durationElement = part;
+    if (part.id === 0xBF) checksum = true;
+    at = part.end;
+  }
+  if (!(scale > 0) || !Number.isFinite(scale)) throw invalid();
+  if (durationElement) {
+    const { dataStart, size } = durationElement;
+    const view = new DataView(bytes.buffer);
+    if (size !== 4 && size !== 8) throw invalid();
+    const existing = size === 4 ? view.getFloat32(dataStart) : view.getFloat64(dataStart);
+    if (Number.isFinite(existing) && existing > 0) return blob;
+    if (checksum) throw invalid();
+    const value = durationSeconds * 1000000000 / scale;
+    if (size === 4) view.setFloat32(dataStart, value); else view.setFloat64(dataStart, value);
+    return new Blob([bytes], { type: blob.type });
+  }
+  if (checksum) throw invalid();
+  const levelOne = new Set([0x114D9B74, 0x1549A966, 0x1654AE6B, 0x1F43B675, 0x1C53BB6B, 0x1941A469, 0x1043A770, 0x1254C367]);
+  for (let at = segment.dataStart; at < segment.end;) {
+    const part = element(at, segment.end);
+    if (part.id === 0x114D9B74 || part.id === 0x1C53BB6B || part.id === 0xBF) throw invalid();
+    if (part.id === 0x1F43B675) {
+      let childAt = part.dataStart;
+      while (childAt < part.end) {
+        const child = element(childAt, part.end);
+        if (part.size === null && levelOne.has(child.id)) break;
+        if (child.id === 0xA7 || child.size === null) throw invalid();
+        childAt = child.end;
+      }
+      at = childAt;
+    } else {
+      if (part.size === null) throw invalid();
+      at = part.end;
+    }
+  }
+  const durationData = new Uint8Array(11);
+  durationData.set([0x44, 0x89, 0x88]);
+  new DataView(durationData.buffer).setFloat64(3, durationSeconds * 1000000000 / scale);
+  const newInfoSize = sizeBytes(info.size + durationData.length, info.sizeLength);
+  const delta = durationData.length + newInfoSize.length - info.sizeLength;
+  const newSegmentSize = segment.size === null
+    ? bytes.subarray(segment.sizeOffset, segment.dataStart)
+    : sizeBytes(segment.size + delta, segment.sizeLength);
+  return new Blob([
+    bytes.subarray(0, segment.sizeOffset), newSegmentSize,
+    bytes.subarray(segment.dataStart, info.sizeOffset), newInfoSize,
+    bytes.subarray(info.dataStart, info.end), durationData, bytes.subarray(info.end),
+  ], { type: blob.type });
+}
+
 /** Dependency-free canvas preview and real audio/video export. Times are seconds. */
 export class LyricRenderer {
   constructor(canvas, audio, { onProgress, onState } = {}) {
@@ -312,8 +434,9 @@ export class LyricRenderer {
       progress(0);
       this._state('exporting');
       this._animate();
-      const blob = await this._record(recorder, controller.signal, progress);
-      const mimeType = recorder.mimeType || blob.type;
+      const recorded = await this._record(recorder, controller.signal, progress);
+      const mimeType = recorder.mimeType || recorded.type;
+      const blob = await finalizeWebmDuration(recorded, audio.duration, { signal: controller.signal });
       result = { blob, mimeType, extension: /mp4/i.test(mimeType) ? 'mp4' : 'webm' };
       progress(1);
     } catch (error) {

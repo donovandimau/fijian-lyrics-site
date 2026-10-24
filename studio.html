@@ -10,7 +10,8 @@
 <section class="editor" aria-label="Music and lyrics">
 <div class="panel"><div class="step-title"><span>01</span><h2>Your music</h2></div>
 <div id="drop-zone" class="drop-zone"><label for="music-file"><strong>Drop your music here</strong><span>or choose audio from your device</span></label><input id="music-file" type="file" accept="audio/*,.mp3,.wav,.m4a,.ogg,.flac,.opus" multiple><p>MP3, WAV, M4A, OGG, FLAC and other formats your browser can play.</p></div>
-<label for="queue">Track</label><select id="queue"><option value="">No music loaded</option></select>
+<div class="toolbar"><label class="file-button" for="music-folder">Choose a music folder<input id="music-folder" type="file" accept="audio/*" webkitdirectory multiple></label></div>
+<label for="queue">Track queue</label><select id="queue"><option value="">No music loaded</option></select><p class="hint">Each track keeps its own lyrics and timing while this studio stays open.</p>
 <div class="fields"><div><label for="title">Song title</label><input id="title" maxlength="160" placeholder="Name your song"></div><div><label for="artist">Artist</label><input id="artist" maxlength="160" placeholder="Artist or performer"></div></div>
 <audio id="track" controls preload="metadata" aria-label="Your music"></audio>
 <p id="music-status" role="status">Choose a track to start.</p></div>
@@ -19,7 +20,7 @@
 <div class="toolbar"><label class="file-button" for="lyrics-file">Import lyrics<input id="lyrics-file" type="file" accept=".txt,.lrc,.srt,.vtt,.json"></label><button id="transcribe" type="button" disabled>Draft lyrics from audio</button><button id="cancel-transcribe" type="button" hidden>Cancel transcription</button></div>
 <p class="hint">Import TXT, LRC, SRT or VTT. Automatic drafts run on this device and need checking, especially for Fijian songs. First use downloads a speech model.</p>
 <p id="transcribe-status" role="status"></p>
-<label for="lyrics">Lyrics — one line at a time</label><textarea id="lyrics" rows="10" placeholder="Paste the words here, one sung line per row…" spellcheck="false"></textarea>
+<label for="lyrics">Lyrics — one line at a time</label><textarea id="lyrics" rows="10" maxlength="200000" placeholder="Paste the words here, one sung line per row…" spellcheck="false"></textarea>
 <p id="library-source" class="hint"></p>
 <div class="toolbar"><button id="apply-lyrics" type="button">Build timeline</button><button id="spread" type="button">Spread lines across track</button></div>
 <p class="hint" id="timing-note">Plain lyrics start with estimated timings. Play the track and tap each line when it begins.</p></div>

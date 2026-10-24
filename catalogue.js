@@ -1,4 +1,4 @@
-// Sere catalogue metadata. Source snapshot: catalogue-draft 5204bb54c62a17a6e0602dd429978306523d5160.
+// Metadata and source links only. Audited 2026-10-24:72 Firecrawl +35 direct HTTP;107/107 original source pages returned200. Recording links are untested.
 window.CATALOGUE = [
   {
     "id": "catalogue-1",
@@ -7,7 +7,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/cagi-ni-delai-yatova-ciqomi-au-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/cagi-ni-delai-yatova-ciqomi-au-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=5Ed2tl-9eYg"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-2",
@@ -16,7 +23,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/lautoka-cmf-choir-fiji-vakavinavinaka-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/lautoka-cmf-choir-fiji-vakavinavinaka-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=fchfvjWFyBA"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-3",
@@ -25,7 +39,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/tai-and-kavaholics-bula-maleya-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/tai-and-kavaholics-bula-maleya-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=KKfrp1fHaGw"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-4",
@@ -34,7 +55,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/mudre-ni-cagi-kei-nasiriva-qiri-nai-vakatagi-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/mudre-ni-cagi-kei-nasiriva-qiri-nai-vakatagi-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=kWvd26MIZgM"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-5",
@@ -43,7 +71,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "cibi (war dance)",
     "sourceUrl": "https://lyricstranslate.com/en/rugby-union-anthems-international-cibi-flying-fijians-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/rugby-union-anthems-international-cibi-flying-fijians-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=Dr6ppL961nc"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-6",
@@ -52,7 +87,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/cakau-ni-mana-kei-uluinav-ni-dau-tukuni-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/cakau-ni-mana-kei-uluinav-ni-dau-tukuni-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=qd2YV8PWRKw"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-7",
@@ -61,7 +103,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/liz-vamarasi-malele-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/liz-vamarasi-malele-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=bJjziGTQZiQ"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-8",
@@ -70,7 +119,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/kku-fiji-tagimoucia-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/kku-fiji-tagimoucia-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-9",
@@ -79,7 +133,15 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/myshaan-carry-my-heart-mositi-au-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/myshaan-carry-my-heart-mositi-au-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=MfW3glhyJ1I",
+      "https://youtube.com/watch?v=y-Jbd5Qgb50"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-10",
@@ -88,7 +150,15 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/kali-tui-dei-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/kali-tui-dei-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=nEh90i6SWOg",
+      "https://youtube.com/watch?v=Zi9Q1ZkKuJI"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-11",
@@ -97,7 +167,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "patriotic",
     "sourceUrl": "https://lyricstranslate.com/en/national-anthems-meda-dau-doka-fijian-national-anthem-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/national-anthems-meda-dau-doka-fijian-national-anthem-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-12",
@@ -106,7 +181,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/black-rose-rosiloa-vakarau-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/black-rose-rosiloa-vakarau-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-13",
@@ -115,7 +195,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/paradise-rootz-kavoro-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/paradise-rootz-kavoro-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=Ad_ObhhGrq4"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-14",
@@ -124,7 +211,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "cibi (war dance)",
     "sourceUrl": "https://lyricstranslate.com/en/afl-anthems-international-cibi-fijian-tribe-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/afl-anthems-international-cibi-fijian-tribe-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-15",
@@ -133,7 +225,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/jese-mucunabitu-biu-ko-suva-ni-kua-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/jese-mucunabitu-biu-ko-suva-ni-kua-lyrics",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-16",
@@ -142,7 +239,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "folk",
     "sourceUrl": "https://lyricstranslate.com/en/oceanic-folk-isa-lei-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/oceanic-folk-isa-lei-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-17",
@@ -151,7 +253,15 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/kali-tui-dodomo-qo-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/kali-tui-dodomo-qo-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=nPZqdAGkKCE",
+      "https://youtube.com/watch?v=Zi9Q1ZkKuJI"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-18",
@@ -160,7 +270,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn/religious",
     "sourceUrl": "https://lyricstranslate.com/en/fijian-worship-songs-ka-talei-ka-talei-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/fijian-worship-songs-ka-talei-ka-talei-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-19",
@@ -169,7 +284,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn/religious",
     "sourceUrl": "https://lyricstranslate.com/en/lords-prayer-tama-i-keimami-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/lords-prayer-tama-i-keimami-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=erouzTRIzt8"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-20",
@@ -178,7 +300,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/vt1s-salusalu-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/vt1s-salusalu-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=6AUWyAXvXnY"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-21",
@@ -187,7 +316,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/rosy-mila-vei-yabaki-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/rosy-mila-vei-yabaki-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=gwf9yNrnILw"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-22",
@@ -196,7 +332,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/liz-vamarasi-wasea-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/liz-vamarasi-wasea-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=q5QfGgnAXpw"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-23",
@@ -205,7 +348,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "folk",
     "sourceUrl": "https://lyricstranslate.com/en/traditional-folk-songs-other-languages-kana-mada-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/traditional-folk-songs-other-languages-kana-mada-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-24",
@@ -214,7 +362,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "folk",
     "sourceUrl": "https://lyricstranslate.com/en/oceanian-folk-isa-lei-lia-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/oceanian-folk-isa-lei-lia-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-25",
@@ -223,7 +376,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/seekers-isa-lei-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/seekers-isa-lei-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=sW73Ii9i1NI"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-26",
@@ -232,7 +392,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/liz-vamarasi-tudei-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/liz-vamarasi-tudei-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=ZWfpwIktBOE"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-27",
@@ -241,7 +408,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/nosy-mila-isa-lei-lia-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/nosy-mila-isa-lei-lia-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=YuEOucF0nfM"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-28",
@@ -250,7 +424,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/ni-tebara-rosi-ni-utoqu-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/ni-tebara-rosi-ni-utoqu-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=SXWjDeALyK4"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-29",
@@ -259,7 +440,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "patriotic",
     "sourceUrl": "https://lyricstranslate.com/en/fijian-patriotic-songs-rara-ni-valu-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/fijian-patriotic-songs-rara-ni-valu-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-30",
@@ -268,7 +454,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "children's song",
     "sourceUrl": "https://lyricstranslate.com/en/fijian-childrens-songs-fijian-alphabet-song-sere-ni-matuavosa-na-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/fijian-childrens-songs-fijian-alphabet-song-sere-ni-matuavosa-na-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=lX-FACUz4Z8"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-31",
@@ -277,7 +470,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "patriotic",
     "sourceUrl": "https://lyricstranslate.com/en/national-anthems-patriotic-songs-fijian-patriotic-song-children-fiji-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/national-anthems-patriotic-songs-fijian-patriotic-song-children-fiji-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=wsH1WTA0yxQ"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-32",
@@ -286,7 +486,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/suliasi-uluilakeba-lusi-mate-wale-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/suliasi-uluilakeba-lusi-mate-wale-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=xamqD0Ue5wI"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-33",
@@ -295,7 +502,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn/religious",
     "sourceUrl": "https://lyricstranslate.com/en/hail-mary-bula-maria-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/hail-mary-bula-maria-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-34",
@@ -304,7 +516,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "patriotic",
     "sourceUrl": "https://lyricstranslate.com/en/royal-fiji-military-forces-band-rara-ni-valu-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/royal-fiji-military-forces-band-rara-ni-valu-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=jQjfL1EpkoE"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-35",
@@ -313,7 +532,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/oni-fiji-curu-mai-tuba-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/oni-fiji-curu-mai-tuba-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=5sfDyf18jM0"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-36",
@@ -322,7 +548,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "cibi (war dance)",
     "sourceUrl": "https://lyricstranslate.com/en/war-dances-cibi-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/war-dances-cibi-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-37",
@@ -331,7 +562,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "children's song",
     "sourceUrl": "https://lyricstranslate.com/en/fijian-childrens-songs-kana-mada-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/fijian-childrens-songs-kana-mada-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-38",
@@ -340,7 +576,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "folk",
     "sourceUrl": "https://lyricstranslate.com/en/oceanian-folk-bula-maleya-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/oceanian-folk-bula-maleya-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-39",
@@ -349,7 +590,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "children's song",
     "sourceUrl": "https://lyricstranslate.com/en/melanesian-childrens-songs-isa-lei-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/melanesian-childrens-songs-isa-lei-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-40",
@@ -358,7 +604,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/jese-mucunabitu-vei-siga-au-diva-tu-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/jese-mucunabitu-vei-siga-au-diva-tu-lyrics",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-41",
@@ -367,7 +618,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/kali-tui-vosota-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/kali-tui-vosota-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=Gbj7axdT1QI"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-42",
@@ -376,7 +634,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/ozz-fiji-likatu-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/ozz-fiji-likatu-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=Pz2cv7tZF3s"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-43",
@@ -385,7 +650,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/suliasi-uluilakeba-mereke-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/suliasi-uluilakeba-mereke-lyrics.html",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=Nj8W3zJZaLs"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-44",
@@ -394,7 +666,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "children's song",
     "sourceUrl": "https://lyricstranslate.com/en/fijian-childrens-songs-ulu-taba-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/fijian-childrens-songs-ulu-taba-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=KuKtuNRtgTE"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-45",
@@ -403,7 +682,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn/religious",
     "sourceUrl": "https://lyricstranslate.com/en/christian-hymns-songs-me-vakalagilagi-o-tamada-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/christian-hymns-songs-me-vakalagilagi-o-tamada-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-46",
@@ -412,7 +696,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn/religious",
     "sourceUrl": "https://lyricstranslate.com/en/hail-mary-ni-bula-maria-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/hail-mary-ni-bula-maria-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-47",
@@ -421,7 +710,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/suliasi-uluilakeba-diva-mea-se-kua-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/suliasi-uluilakeba-diva-mea-se-kua-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=-6YlYv3gkAQ"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-48",
@@ -430,7 +726,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/black-rose-rosiloa-livaliva-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/black-rose-rosiloa-livaliva-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=_3f_5KfWh0Q"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-49",
@@ -439,7 +742,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "children's song",
     "sourceUrl": "https://lyricstranslate.com/en/melanesian-childrens-songs-kana-mada-lyrics.html",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/melanesian-childrens-songs-kana-mada-lyrics.html",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-50",
@@ -448,7 +756,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn/religious",
     "sourceUrl": "https://lyricstranslate.com/en/dokidoki-gospel-i-tamaqu-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/dokidoki-gospel-i-tamaqu-lyrics",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-51",
@@ -457,7 +770,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/nem-talei-loloma-nei-nau-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/nem-talei-loloma-nei-nau-lyrics",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-52",
@@ -466,7 +784,14 @@ window.CATALOGUE = [
     "year": null,
     "genre": "unspecified (contemporary)",
     "sourceUrl": "https://lyricstranslate.com/en/oni-fiji-soko-yawa-lyrics",
-    "sourceName": "LyricsTranslate"
+    "sourceName": "LyricsTranslate",
+    "fijianUrl": "https://lyricstranslate.com/en/oni-fiji-soko-yawa-lyrics",
+    "recordingUrls": [
+      "https://youtube.com/watch?v=ybz-YX70FKU"
+    ],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-53",
@@ -475,34 +800,54 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/209/hark-the-herald-angels-sing",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/209/hark-the-herald-angels-sing",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-54",
-    "title": "Au bole meu sa lesi ka veiqaravi ga",
+    "title": "Kemuni Sa Kacivi",
     "artist": "Mary Judd Page (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/314/ye-who-are-called-to-labor",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/314/ye-who-are-called-to-labor",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-55",
-    "title": "Au caka vinaka beka li edai?",
+    "title": "Na Cakavinaka",
     "artist": "Will L. Thompson (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/223/have-i-done-any-good",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/223/have-i-done-any-good",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-56",
-    "title": "Au Dau Vakasama Ni’u Wilika Tu",
+    "title": "Nai Talanoa Makawa o Ya",
     "artist": "Jemima Luke (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/379/i-think-when-i-read-that-sweet-story",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/379/i-think-when-i-read-that-sweet-story",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-57",
@@ -511,7 +856,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/270/ill-go-where-you-want-me-to-go",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/270/ill-go-where-you-want-me-to-go",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-58",
@@ -520,16 +870,26 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/98/i-need-thee-every-hour",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/98/i-need-thee-every-hour",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-59",
-    "title": "Au sa kila na yaca talei",
+    "title": "Na Yaca Talei",
     "artist": "Frances K. Taylor (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/500/the-dearest-names",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/500/the-dearest-names",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-60",
@@ -538,7 +898,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/136/i-know-that-my-redeemer-lives",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/136/i-know-that-my-redeemer-lives",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-61",
@@ -547,7 +912,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/100/nearer-my-god-to-thee",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/100/nearer-my-god-to-thee",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-62",
@@ -556,7 +926,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/59/come-o-thou-king-of-kings",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/59/come-o-thou-king-of-kings",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-63",
@@ -565,7 +940,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/117/come-unto-jesus",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/117/come-unto-jesus",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-64",
@@ -574,7 +954,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/140/did-you-think-to-pray",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/140/did-you-think-to-pray",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-65",
@@ -583,7 +968,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/204/silent-night",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/204/silent-night",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-66",
@@ -592,16 +982,26 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/207/it-came-upon-the-midnight-clear",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/207/it-came-upon-the-midnight-clear",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-67",
-    "title": "Buca Mai Jiutia Sa Yawa Tu",
+    "title": "Buca Mai Jutia Sa Yawa Tu",
     "artist": "John Menzies Macfarlane (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/212/far-far-away-on-judeas-plains",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/212/far-far-away-on-judeas-plains",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-68",
@@ -610,7 +1010,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/246/onward-christian-soldiers",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/246/onward-christian-soldiers",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-69",
@@ -619,7 +1024,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/267/how-wondrous-and-great",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/267/how-wondrous-and-great",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-70",
@@ -628,7 +1038,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/449/shine-on",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/449/shine-on",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-71",
@@ -637,16 +1052,26 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/321/brightly-beams-our-fathers-mercy",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/321/brightly-beams-our-fathers-mercy",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-72",
-    "title": "Delana Drokadroka",
+    "title": "Delana Tu Vakayawa",
     "artist": "Cecil Frances Alexander (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/194/there-is-a-green-hill-far-away",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/194/there-is-a-green-hill-far-away",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "Firecrawl"
   },
   {
     "id": "catalogue-73",
@@ -655,7 +1080,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/239/choose-the-right",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/239/choose-the-right",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-74",
@@ -664,25 +1094,40 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/254/true-to-the-faith",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/254/true-to-the-faith",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-75",
-    "title": "Dina sa vunauta ki mai",
+    "title": "Vakananuma Na Dina",
     "artist": "Anon.; M. E. Abbey (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/273/truth-reflects-upon-our-senses",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/273/truth-reflects-upon-our-senses",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-76",
-    "title": "Dina Tu Ga",
+    "title": "Mo Bolea Mo Dina Tu",
     "artist": "George L. Taylor (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/463/dare-to-do-right",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/463/dare-to-do-right",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-77",
@@ -691,7 +1136,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/27/praise-to-the-man",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/27/praise-to-the-man",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-78",
@@ -700,7 +1150,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/195/how-great-the-wisdom-and-the-love",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/195/how-great-the-wisdom-and-the-love",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-79",
@@ -709,25 +1164,40 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/203/angels-we-have-heard-on-high",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/203/angels-we-have-heard-on-high",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-80",
-    "title": "Dou Gole Mai",
+    "title": "Ka Talei, Ka Talei",
     "artist": "William Clayton (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/30/come-come-ye-saints",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/30/come-come-ye-saints",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-81",
-    "title": "Dou tacake mada ga",
+    "title": "Vueta Cake Nai Vunau",
     "artist": "William W. Phelps (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/146/gently-raise-the-sacred-strain",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/146/gently-raise-the-sacred-strain",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-82",
@@ -736,7 +1206,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/554/smiles",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/554/smiles",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-83",
@@ -745,16 +1220,26 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/523/give-said-the-little-stream",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/523/give-said-the-little-stream",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-84",
-    "title": "Dua na mataka talei",
+    "title": "Matai Ni Masu Nei Josefa Simici",
     "artist": "George Manwaring (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/26/joseph-smiths-first-prayer",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/26/joseph-smiths-first-prayer",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-85",
@@ -763,16 +1248,26 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/29/a-poor-wayfaring-man-of-grief",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/29/a-poor-wayfaring-man-of-grief",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-86",
-    "title": "E A Sucu Ko Jisu",
+    "title": "Nona Sucu ko Jisu",
     "artist": "Parley P. Pratt (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/196/jesus-once-of-humble-birth",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/196/jesus-once-of-humble-birth",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-87",
@@ -781,16 +1276,26 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/229/today-while-the-sun-shines",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/229/today-while-the-sun-shines",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-88",
-    "title": "Eda sa mai soqo vata",
+    "title": "Solisoli Nei Tamada",
     "artist": "Karolina W. Sandell-Berg (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/299/children-of-our-heavenly-father",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/299/children-of-our-heavenly-father",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-89",
@@ -799,7 +1304,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/35/for-the-strength-of-the-hills",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/35/for-the-strength-of-the-hills",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-90",
@@ -808,7 +1318,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/205/once-in-royal-davids-city",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/205/once-in-royal-davids-city",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-91",
@@ -817,7 +1332,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/307/in-our-lovely-deseret",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/307/in-our-lovely-deseret",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-92",
@@ -826,7 +1346,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/44/beautiful-zion-built-above",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/44/beautiful-zion-built-above",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-93",
@@ -835,16 +1360,26 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/5/high-on-the-mountain-top",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/5/high-on-the-mountain-top",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-94",
-    "title": "Gadrevi na tamata",
+    "title": "Tabalaka Nomui Gu",
     "artist": "Will L. Thompson (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/252/put-your-shoulder-to-the-wheel",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/252/put-your-shoulder-to-the-wheel",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-95",
@@ -853,25 +1388,40 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/37/the-wintry-day-descending-to-its-close",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/37/the-wintry-day-descending-to-its-close",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-96",
-    "title": "I Jiova na Kalou Cecere",
+    "title": "iSolisoli ni Kalou e Veisiga",
     "artist": "William Williams (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/83/guide-us-o-thou-great-jehovah",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/83/guide-us-o-thou-great-jehovah",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-97",
-    "title": "I ragone sa voleka",
+    "title": "Sa Voleka Na Kalou",
     "artist": "Charles L. Walker (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/96/dearest-children-god-is-near-you",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/96/dearest-children-god-is-near-you",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-98",
@@ -880,7 +1430,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/7/israel-israel-god-is-calling",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/7/israel-israel-god-is-calling",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-99",
@@ -889,16 +1444,26 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/292/o-my-father",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/292/o-my-father",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-100",
-    "title": "I Tamaquausakila",
+    "title": "I Tamaqu Au Sa Kila",
     "artist": "Parley P. Pratt (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/180/father-in-heaven-we-do-believe",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/180/father-in-heaven-we-do-believe",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-101",
@@ -907,16 +1472,26 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/386/beautiful-savior",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/386/beautiful-savior",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-102",
-    "title": "Jiova ga noda Kalou qa qa",
+    "title": "Ligamuni Qaqa Na Noda Kalou",
     "artist": "Daniel C. Roberts (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/78/god-of-our-fathers-whose-almighty-hand",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/78/god-of-our-fathers-whose-almighty-hand",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-103",
@@ -925,7 +1500,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/102/jesus-lover-of-my-soul",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/102/jesus-lover-of-my-soul",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-104",
@@ -934,7 +1514,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/181/jesus-of-nazareth-savior-and-king",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/181/jesus-of-nazareth-savior-and-king",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-105",
@@ -943,7 +1528,12 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/378/jesus-once-was-a-little-child",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/378/jesus-once-was-a-little-child",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-106",
@@ -952,15 +1542,25 @@ window.CATALOGUE = [
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/105/master-the-tempest-is-raging",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/105/master-the-tempest-is-raging",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   },
   {
     "id": "catalogue-107",
-    "title": "Jisu sa tucake mai, Aleluia!",
+    "title": "Sa Tucake Ko Jisu",
     "artist": "Charles Wesley (original text; Fijian translation)",
     "year": null,
     "genre": "hymn",
     "sourceUrl": "https://singpraises.net/texts/200/christ-the-lord-is-risen-today",
-    "sourceName": "SingPraises.net"
+    "sourceName": "SingPraises.net",
+    "fijianUrl": "https://singpraises.net/texts/fj/200/christ-the-lord-is-risen-today",
+    "recordingUrls": [],
+    "sourceCheckedAt": "2026-10-24",
+    "sourceHttpStatus": 200,
+    "retrievalMethod": "HTTP"
   }
 ];

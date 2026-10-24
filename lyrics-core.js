@@ -53,6 +53,7 @@ export function validateCues(cues, duration) {
   for (let i=0; i<cues.length; i++) {
     const c = cues[i];
     if (!c.text.trim()) return `Line ${i+1} needs words.`;
+    if (c.text.length > 1000) return `Line ${i+1} is too long. Split it into shorter sung lines.`;
     if (!Number.isFinite(c.start) || !Number.isFinite(c.end) || c.start < 0 || c.end <= c.start) return `Check the start and end of line ${i+1}.`;
     if (i && c.start < cues[i-1].end - 0.001) return `Line ${i+1} overlaps the previous line.`;
     if (Number.isFinite(duration) && c.end > duration + 0.05) return `Line ${i+1} ends after the music.`;

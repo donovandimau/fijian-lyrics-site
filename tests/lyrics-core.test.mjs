@@ -18,4 +18,5 @@ assert.match(toVtt(srt.cues),/00:00:01\.000 --> 00:00:03\.250/);
 assert.match(validateCues([{start:0,end:3,text:'A'},{start:2,end:4,text:'B'}],6),/overlaps/);
 assert.match(validateCues([{start:0,end:7,text:'A'}],6),/after/);
 assert.ok(Number.isNaN(parseTime('bad')));
+assert.match(validateCues([{start:0,end:1,text:'a'.repeat(1001)}]),/Split/);
 console.log('PASS: repeated LRC tags/offset, pre-audio import, SRT multiline/gaps, plain draft, timestamp carry/round-trip, VTT, overlap and duration validation.');
