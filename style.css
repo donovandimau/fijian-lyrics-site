@@ -6,3 +6,4 @@
 @media(max-width:365px){.wrap{padding-inline:16px}.site-header nav{gap:11px}.brand{font-size:31px}h1{font-size:70px}.hero-actions{gap:10px}.text-button{font-size:10px}.filters{gap:5px}.chip{padding-inline:10px}.cover-letter{font-size:36px}.culture-strip i{font-size:11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 @media(forced-colors:active){.cover,.hero-art,.session-visual,.badge,.chip,.button,.transport{border:1px solid CanvasText}.cover-title{border:1px solid ButtonText}.cover-letter{background:Canvas;color:CanvasText}.visual-sun,.vinyl{display:none}}
+.card-topline h3{margin:0}.player{padding-bottom:calc(15px + env(safe-area-inset-bottom,0px))}@media(max-width:760px){.player{padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}.save-button{width:40px;height:40px;top:5px;right:5px}}
