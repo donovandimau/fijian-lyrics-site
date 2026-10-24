@@ -17,6 +17,7 @@
 <p id="music-status" role="status">Choose a track to start.</p></div>
 <div class="panel"><div class="step-title"><span>02</span><h2>The words</h2></div>
 <label for="library-song">Start with a Sere song</label><select id="library-song"><option value="">Choose from the song library</option></select>
+<div id="source-audio-panel" hidden><label for="source-audio">Available source recordings</label><select id="source-audio"></select><div class="toolbar"><button id="use-source-audio" type="button">Load source recording</button><button id="cancel-source-audio" type="button" hidden>Cancel loading</button></div><p class="hint">Vocal and accompaniment versions are labelled separately. A source must allow browser access to load here; its original link stays available below.</p></div>
 <div class="toolbar"><label class="file-button" for="lyrics-file">Import lyrics<input id="lyrics-file" type="file" accept=".txt,.lrc,.srt,.vtt,.json"></label><button id="transcribe" type="button" disabled>Draft lyrics from audio</button><button id="cancel-transcribe" type="button" hidden>Cancel transcription</button></div>
 <p class="hint">Import TXT, LRC, SRT or VTT. Automatic drafts run on this device and need checking, especially for Fijian songs. First use downloads a speech model.</p>
 <p id="transcribe-status" role="status"></p>

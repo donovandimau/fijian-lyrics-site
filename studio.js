@@ -10,6 +10,7 @@ let exportController, downloadUrl, working = false, transcribing = false, source
 let transcriptionRun;
 let exportMessageFixed = false;
 let automaticTitle = true;
+let loadingRecording = false, recordingController;
 const renderer = new LyricRenderer($('video-preview'), audio);
 const transcriber = createTranscriber({onProgress: p => {
   $('transcribe-status').textContent = typeof p === 'string' ? p : (p?.message || 'Preparing speech model…');
@@ -31,13 +32,15 @@ function configure() {
   renderer.configure({cues, title: $('title').value || 'Your song', artist: $('artist').value, theme: $('theme').value, aspect: $('aspect').value});
 }
 function update() {
-  for (const el of document.querySelectorAll('.editor input,.editor select,.editor textarea,.editor button,.timeline-panel button,.timeline-panel input')) el.disabled = working || transcribing;
+  for (const el of document.querySelectorAll('.editor input,.editor select,.editor textarea,.editor button,.timeline-panel button,.timeline-panel input')) el.disabled = working || transcribing || loadingRecording;
   $('cancel-transcribe').disabled = false;
+  $('cancel-source-audio').disabled = false;
+  $('use-source-audio').disabled = working || transcribing || loadingRecording || !$('source-audio').options.length;
   const error = validateCues(cues, audio.duration);
   $('validation').textContent = dirty ? 'Build the timeline to apply your edited lyrics.' : error;
-  $('export-video').disabled = !tracks[trackIndex] || !Number.isFinite(audio.duration) || !!audio.error || audio.readyState < 1 || !!error || dirty || working || transcribing;
-  $('tap').disabled = !cues.length || !tracks[trackIndex] || working || dirty || transcribing;
-  $('transcribe').disabled = !tracks[trackIndex] || !Number.isFinite(audio.duration) || working || transcribing;
+  $('export-video').disabled = !tracks[trackIndex] || !Number.isFinite(audio.duration) || !!audio.error || audio.readyState < 1 || !!error || dirty || working || transcribing || loadingRecording;
+  $('tap').disabled = !cues.length || !tracks[trackIndex] || working || dirty || transcribing || loadingRecording;
+  $('transcribe').disabled = !tracks[trackIndex] || !Number.isFinite(audio.duration) || working || transcribing || loadingRecording;
   if (!working && !exportMessageFixed) $('export-status').textContent = !tracks[trackIndex] ? 'Choose music to create your video.' : !cues.length ? 'Add lyrics and build a timeline to continue.' : dirty ? 'Build the timeline to apply your edited lyrics.' : error ? 'Check the line timing before creating a video.' : 'Ready to create your lyric video with audio.';
   configure();
 }
@@ -80,7 +83,10 @@ function message(text) { $('music-status').textContent = text; }
 function cancelTranscription() { if (transcriptionRun) transcriptionRun.cancelled = true; transcriber.cancel(); }
 function saveTrack() {
   if(!tracks[trackIndex]) return;
-  tracks[trackIndex].project = {
+  tracks[trackIndex].project = projectSnapshot();
+}
+function projectSnapshot() {
+  return {
     cues:cues.map(c=>({...c})),lyrics:$('lyrics').value,draftTiming,openEnded,dirty,tapIndex,automaticTitle,
     values:Object.fromEntries(['title','artist','theme','aspect','library-song'].map(id=>[id,$(id).value])),
     source:$('library-source').cloneNode(true),note:$('timing-note').textContent,
@@ -105,6 +111,7 @@ function selectTrack(index) {
     $('library-source').replaceChildren();
     $('timing-note').textContent='Add lyrics for this track. Each queued song keeps its own words and timing.';
   }
+  sourceAudioOptions();
   $('queue').value = String(index);
   audio.src = tracks[index].url; audio.load();
   if (automaticTitle) $('title').value = tracks[index].file.name.replace(/\.[^.]+$/, '');
@@ -117,13 +124,14 @@ function selectTrack(index) {
   }
   message(`Loading ${tracks[index].file.name}…`); invalidateVideo(); table();
 }
-function addTracks(files) {
+function addTracks(files, {initialProject} = {}) {
   if (working) return;
   let first = tracks.length;
   for (const file of files) {
     if (!file.type.startsWith('audio/') && !/\.(mp3|wav|m4a|aac|ogg|oga|flac|opus|aiff?|webm|mp4)$/i.test(file.name)) continue;
     if (!file.size) continue;
-    tracks.push({file, url: URL.createObjectURL(file)});
+    tracks.push({file, url: URL.createObjectURL(file), project:initialProject});
+    $('queue').querySelector('option[value=""]')?.remove();
     $('queue').add(new Option(file.name, String(tracks.length - 1)));
   }
   if (tracks.length > first) selectTrack(first); else message('No playable audio files found. Try an MP3, WAV, M4A or OGG track.');
@@ -174,14 +182,43 @@ function useSong(index) {
   if (song.source && /^https:\/\//.test(song.source)) {
     source.append(song.lyricsFijian ? 'Words from the Sere library. ' : 'This catalogue entry has a source link. Add its lyrics and your recording to make a video. ');
     const link = document.createElement('a'); link.href = song.source; link.target = '_blank'; link.rel = 'noopener'; link.textContent = 'Open song source'; source.append(link);
-    for(const [i,url] of (song.recordingUrls || []).slice(0,3).entries()) {
+    for(const [i,url] of (song.recordingUrls || []).slice(0,4).entries()) {
       if(!/^https:\/\//.test(url)) continue;
-      const recording = document.createElement('a'); recording.href=url; recording.target='_blank'; recording.rel='noopener'; recording.textContent=`Recording source${i ? ` ${i+1}` : ''}`; source.append(' · ',recording);
+      const recording = document.createElement('a'); recording.href=url; recording.target='_blank'; recording.rel='noopener'; recording.textContent=song.recordings?.find(r=>r.url===url)?.label || `Recording source${i ? ` ${i+1}` : ''}`; source.append(' · ',recording);
     }
   }
+  sourceAudioOptions();
   applyText();
 }
-$('library-song').addEventListener('change', e => { if (e.target.value !== '') useSong(+e.target.value); });
+function sourceAudioOptions() {
+  const song = $('library-song').value === '' ? null : allSongs[+$('library-song').value];
+  const rows = new Map();
+  for(const r of [...(song?.recordings || []),...(song?.recordingUrls || []).map(url=>({url,label:'Source audio'}))]) {
+    try {const url=new URL(r.url);if(url.protocol==='https:' && /\.(mp3|wav|m4a|aac|ogg|oga|flac|opus)$/i.test(url.pathname) && !rows.has(url.href)) rows.set(url.href,r.label || r.type || 'Source audio');}catch{}
+  }
+  $('source-audio').replaceChildren(...Array.from(rows,([url,label])=>new Option(label,url)));
+  $('source-audio-panel').hidden=!rows.size;
+}
+$('use-source-audio').addEventListener('click',async()=>{
+  const url=$('source-audio').value;if(!url || loadingRecording || working || transcribing) return;
+  const project=projectSnapshot();
+  recordingController=new AbortController(); loadingRecording=true; $('cancel-source-audio').hidden=false; update();
+  message('Loading the selected recording from its source…');
+  const timer=setTimeout(()=>recordingController?.abort(),60000);
+  try {
+    const response=await fetch(url,{mode:'cors',credentials:'omit',signal:recordingController.signal});
+    if(!response.ok) throw new Error(`Source returned HTTP ${response.status}.`);
+    if(Number(response.headers.get('content-length'))>150*1024*1024) throw new Error('This source recording is larger than150MB.');
+    const blob=await response.blob();
+    if(!blob.size || blob.size>150*1024*1024 || /^text\//i.test(blob.type)) throw new Error('The source did not return a usable audio file.');
+    const extension=new URL(url).pathname.match(/\.([a-z0-9]+)$/i)?.[1] || 'mp3';
+    addTracks([new File([blob],`${fileName()}.${extension}`,{type:blob.type || 'audio/mpeg'})],{initialProject:project});
+  } catch(error) {
+    message(error.name==='AbortError'?'Source loading cancelled.':'Could not load this recording here. Open its source link, or choose an audio file from your device. '+(error instanceof TypeError?'The source may restrict browser access.':error.message));
+  } finally {clearTimeout(timer); recordingController=null; loadingRecording=false; $('cancel-source-audio').hidden=true; update();}
+});
+$('cancel-source-audio').addEventListener('click',()=>recordingController?.abort());
+$('library-song').addEventListener('change', e => { if (e.target.value !== '') useSong(+e.target.value); else {sourceAudioOptions();update();} });
 function tapLine() {
   if ($('tap').disabled) return;
   if (audio.paused) { $('tap-status').textContent = 'Press play first, then tap as each line starts.'; return; }
@@ -223,6 +260,7 @@ function loadProject(project) {
   if (['landscape','portrait','square'].includes(project.aspect)) $('aspect').value = project.aspect;
   $('lyrics').value = cues.map(c => c.text).join('\n'); dirty = false; draftTiming = false; openEnded = false; tapIndex = 0;
   $('library-song').value = ''; $('library-source').textContent = '';
+  sourceAudioOptions();
   $('timing-note').textContent = `Project loaded. Reattach ${String(project.audioName || 'your original audio')} to continue.`;
   invalidateVideo(); table();
 }
@@ -284,7 +322,7 @@ $('transcribe').addEventListener('click', async () => {
 });
 $('cancel-transcribe').addEventListener('click', cancelTranscription);
 window.addEventListener('beforeunload', e => {if(working){e.preventDefault();e.returnValue='';}});
-window.addEventListener('pagehide', event => { exportController?.abort(); if(!event.persisted){transcriber.dispose(); renderer.destroy(); tracks.forEach(t => URL.revokeObjectURL(t.url));} });
+window.addEventListener('pagehide', event => { exportController?.abort(); recordingController?.abort(); if(!event.persisted){transcriber.dispose(); renderer.destroy(); tracks.forEach(t => URL.revokeObjectURL(t.url));} });
 document.addEventListener('visibilitychange', () => { if (document.hidden && working) {exportController?.abort(); $('export-status').textContent = 'Export cancelled because the tab was hidden. Keep it visible and try again.';} });
 const selected = new URLSearchParams(location.search).get('song');
 if (selected) {const i=allSongs.findIndex(s => s.id===selected || s.title===selected); if(i>=0){$('library-song').value=String(i);useSong(i);}}
